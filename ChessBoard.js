@@ -2,21 +2,33 @@
 function createBoard()
 {
 	var board = document.getElementById("board");
-	
+			
+	// creating an array of file namespaceURI
+	var fileNames = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+
+		
 	// loop for rows
 	for(var row = 8; row > 0; row--)
 	{
 		// creating rows
 		var rank = document.createElement("tr");
 		
+	
+		// creating the rank markers
+		var rankNumber = document.createElement("td");
+		rankNumber.width="15";
+		rankNumber.innerHTML = row;
+		rank.appendChild(rankNumber);
+		
 		// loop for columns
 		for (var cell = 1; cell <= 8; cell++)
 		{
-			// creating cellspacing
+			// creating cells
 			var square = document.createElement("td");
 			// formating the square
-			square.width = "75";
-			square.height = "75";
+			square.id = fileNames[cell -1 ] + row;
+			square.width = "65";
+			square.height = "65";
 			
 			// starting with a while square on the top-left, and alternating the color from there on
 			if(row % 2 == 0 && cell % 2 == 0 || row % 2 == 1 && cell % 2 ==1)
@@ -35,4 +47,19 @@ function createBoard()
 		// appending the rows to the board
 		board.appendChild(rank);
 	}
+	
+	// creating the file markers
+	var fileLetters = document.createElement("tr");
+	
+	for (var cell = 1; cell <= 9; cell++)
+	{
+		
+		var square = document.createElement("td");
+		if (cell > 1)
+		{
+			square.innerHTML = fileNames[cell - 2];
+		}
+		fileLetters.appendChild(square);
+	}
+	board.appendChild(fileLetters);
 }
