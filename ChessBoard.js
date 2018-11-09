@@ -130,7 +130,7 @@ function setBoard()
 		}
 		else if (i == 2 || i == 7)
 		{
-		// knights
+			// knights
 			piece = "&#9816;";
 		}
 		else if (i == 3 || i == 6)
